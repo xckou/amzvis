@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 import json
    
 # return '<h3>' + str(ctr) + '</h3>'
-text = "an elephant and an apple"
+text = "1 elephant and two apple"
 # return text
 
 sentence_re = r'(?:(?:[A-Z])(?:.[A-Z])+.?)|(?:\w+(?:-\w+)*)|(?:\$?\d+(?:.\d+)?%?)|(?:...|)(?:[][.,;"\'?():-_`])'
@@ -49,20 +49,23 @@ def get_terms(tree):
 		yield term
 
 terms = get_terms(tree)
-data = {}
-data["items"] = []
 
-i = 0
-for term in terms:
-	for word in term:
-		
-		data["items"].append({
-			i : word
-			})
-		i = i + 1
+itemsdict = dict((y, x) for x, y in postoks)
+print(itemsdict)
 
 
+
+
+ 
 with open('data.json', 'w') as outfile:
-    json.dump(data, outfile)
+    json.dump(itemsdict, outfile)
 
+
+
+# for term in terms:
+# 	for word in term:
+# 		data["items"].append()
+# 		i + 1
+
+# 	return nounlist
 
